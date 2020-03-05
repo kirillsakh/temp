@@ -1,12 +1,13 @@
 def calculate_frequency(input_file, patterns, encoding_type=None, output_file=None):
-	"""'calculate_frequency(input_file, patterns, encoding_type, output_file)':
-	   returns dictionary that contains 
-	   frequency of tokens from the given file
+	"""calculate_frequency(input_file, patterns, encoding_type, output_file):
 
-	   input_file ... plain text file in that encoding	   
-	   patterns ... list of strings to find
-	   encoding_type ... character encoding	(utf-8 if not specified)   
-	   output_file ... name of a file to write the output to
+	   Return dictionary that contains tokens frequency distribution in given file
+	   matching given pattern(s).
+
+	   input_file    ... plain text file encoded according to 'encoding_type' parameter	   
+	   patterns      ... list of string patterns to look for
+	   encoding_type ... character encoding	('utf-8' if not specified)   
+	   output_file   ... name of a file to write the output to ('output.txt' by default)
 
 	"""
 	if encoding_type == None: # default encoding
@@ -40,14 +41,14 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 					token = '' # empty token object
 	
 	with open(output_file, "a") as file:
-		for key in result:
+		for key in sorted(result):
 			file.write(f"{key} {result[key]}\n")
 		file.write(f"{'-'*10}\n")
 
 	return result
 
 def test_function():
-	print("Testing", calculate_frequency.__doc__)
+	print("Testing ... ", calculate_frequency.__doc__)
 	
 	test_dictionary = {
 	"awe":    1,
