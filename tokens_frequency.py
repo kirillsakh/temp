@@ -52,7 +52,7 @@ def test_function():
 	print("Testing ... ", calculate_frequency.__doc__)
 	
 	# Tesctcase #1 (regular case)
-	test_dictionary = {
+	test_counters = {
 	"awe":    1,
 	"pa,":    1,
 	"pat":    2,
@@ -60,31 +60,31 @@ def test_function():
 	"we" :    2
 	}
 
-	output_dictionary = calculate_frequency('test.txt', ['pa', 'we'])
+	result_counters = calculate_frequency('test.txt', ['pa', 'we'])
 	
 	print("\nTestcase #1 (regular case)", end=' ')
-	for key in test_dictionary:
-		if not key in output_dictionary or \
-		test_dictionary[key] != output_dictionary[key]:
+	for key in test_counters:
+		if not key in result_counters or \
+		test_counters[key] != result_counters[key]:
 			print("Fail")
 			return
 	print("OK")
 
 	print("\nTokens frequency distribution: ")
-	for key in sorted(output_dictionary): # print results
-		print(f"{key:>10}: {output_dictionary[key]}")
+	for key in sorted(result_counters): # print results
+		print(f"{key:>10}: {result_counters[key]}")
 
 	# Tesctcase #2 (empty input_file)
-	output_dictionary = calculate_frequency('test2.txt', ['pa', 'we'])
+	result_counters = calculate_frequency('test2.txt', ['pa', 'we'])
 	
 	print("\nTestcase #2 (empty input_file)", end=' ')
-	print("OK") if output_dictionary == -1 else print("Fail")
+	print("OK") if result_counters == -1 else print("Fail")
 
 	# Tesctcase #3 (nonexisting string pattern)
-	output_dictionary = calculate_frequency('test.txt', ['nesmysl'])
+	result_counters = calculate_frequency('test.txt', ['nesmysl'])
 	
 	print("\nTestcase #3 (nonexisting string pattern)", end=' ')
-	print("OK") if output_dictionary == -1 else print("Fail")
+	print("OK") if result_counters == -1 else print("Fail")
 
 if __name__ == '__main__':
 	test_function()
