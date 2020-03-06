@@ -74,17 +74,13 @@ def test_function():
 		print(f"{key:>10}: {output_dictionary[key]}")
 
 	# Tesctcase #2 (empty input_file)
-	test_dictionary = {}
-
 	output_dictionary = calculate_frequency('test2.txt', ['pa', 'we'])
 	
 	print("\nTestcase #2 (empty input_file)", end=' ')
-	for key in test_dictionary:
-		if not key in output_dictionary or \
-		test_dictionary[key] != output_dictionary[key]:
-			print("Fail")
-			return
-	print("OK")	
+	if len(output_dictionary) == 0:
+		print("OK")
+	else:
+		print("Fail")
 
 	# Tesctcase #3 (nonexisting string pattern)
 	test_dictionary = {}
@@ -92,12 +88,10 @@ def test_function():
 	output_dictionary = calculate_frequency('test.txt', ['nesmysl'])
 	
 	print("\nTestcase #3 (nonexisting string pattern)", end=' ')
-	for key in test_dictionary:
-		if not key in output_dictionary or \
-		test_dictionary[key] != output_dictionary[key]:
-			print("Fail")
-			return
-	print("OK")	
+	if len(output_dictionary) == 0:
+		print("OK")
+	else:
+		print("Fail")
 
 if __name__ == '__main__':
 	test_function()
