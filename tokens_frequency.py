@@ -24,7 +24,7 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 
 	result = {} # initialize dictionary to store frequency counts
 
-	for line in lines: # process input line by line
+	for line in lines: # go line by line
 		token = '' # initialize token object
 		for char in line: # iterate over all characters in line
 			if char != ' ' and char != '\n': # tokens are set of characters separated by white-spaces or newlines
