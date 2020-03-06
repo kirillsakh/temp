@@ -50,6 +50,7 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 
 def test_function():
 	print("Testing ... ", calculate_frequency.__doc__)
+				   
 	# Tesctcase #1 (regular case)
 	test_dictionary = {
 	"awe":    1,
