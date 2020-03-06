@@ -54,7 +54,7 @@ def test_function():
 	# Tesctcase #1 (regular case)
 	test_dictionary = {
 	"awe":    1,
-	"pa,":     1,
+	"pa,":    1,
 	"pat":    2,
 	"pawes.": 1,
 	"we" :    2
