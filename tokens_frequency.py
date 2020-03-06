@@ -28,21 +28,21 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 		token = '' # initialize token object
 		for char in line: # go character by character in line
 			if char != ' ' and char != '\n': # tokens are set of characters separated by white-spaces or newlines
-				token += char # add character to the token
+				token += char # add character to token
 			else: # end of token
 				if len(token) != 0: # if token,
 					for pattern in patterns: # go pattern by pattern in patterns
 						if pattern in token: # if match,
 							if not token in result:
-								result[token] = 1 # if new match, count equals one
+								result[token] = 1 # if new match, counter equals one
 							else:
-								result[token] += 1 # else, increment match count
+								result[token] += 1 # else, increment match counter
 							break # no need to continue; avoid duplicity
 					token = '' # empty token object for next entry
 	
 	if result: # if not empty
 		with open(output_file, "a") as file:
-			for key in sorted(result): # save counts to file
+			for key in sorted(result): # save match counters to file
 				file.write(f"{key} {result[key]}\n")
 			file.write(f"{'-'*10}\n")
 
