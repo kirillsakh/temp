@@ -16,7 +16,7 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 	if output_file == None: # default output file name
 		output_file = "output.txt"
 
-	try:#better safe than sorry
+	try: # better safe than sorry
 		with open(input_file, encoding=encoding_type) as file:
 			lines = file.readlines() # read all lines from file to list
 	except FileNotFoundError:
