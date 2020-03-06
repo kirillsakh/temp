@@ -2,7 +2,7 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 	"""calculate_frequency(input_file, patterns, encoding_type, output_file):
 
 	   Return dictionary that contains tokens frequency distribution in given file
-	   matching given pattern(s).
+	   matching given pattern(s) or -1 otherwise.
 
 	   input_file    ... plain text file encoded according to 'encoding_type' attribute	   
 	   patterns      ... list of string patterns to look for, e.g. [pattern1, pattern2, ...]
