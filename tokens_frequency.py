@@ -46,11 +46,11 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 				file.write(f"{key} {result[key]}\n")
 			file.write(f"{'-'*10}\n")
 
-	return result
+	return result if result else -1
 
 def test_function():
 	print("Testing ... ", calculate_frequency.__doc__)
-				   
+	
 	# Tesctcase #1 (regular case)
 	test_dictionary = {
 	"awe":    1,
@@ -78,13 +78,13 @@ def test_function():
 	output_dictionary = calculate_frequency('test2.txt', ['pa', 'we'])
 	
 	print("\nTestcase #2 (empty input_file)", end=' ')
-	print("OK") if len(output_dictionary) == 0 else print("Fail")
+	print("OK") if output_dictionary == -1 else print("Fail")
 
 	# Tesctcase #3 (nonexisting string pattern)
 	output_dictionary = calculate_frequency('test.txt', ['nesmysl'])
 	
 	print("\nTestcase #3 (nonexisting string pattern)", end=' ')
-	print("OK") if len(output_dictionary) == 0 else print("Fail")
+	print("OK") if output_dictionary == -1 else print("Fail")
 
 if __name__ == '__main__':
 	test_function()
