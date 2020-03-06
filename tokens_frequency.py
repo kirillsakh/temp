@@ -26,13 +26,13 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 
 	for line in lines: # go line by line
 		token = '' # initialize token object
-		for char in line: # iterate over all characters in line
+		for char in line: # go character by character in line
 			if char != ' ' and char != '\n': # tokens are set of characters separated by white-spaces or newlines
 				token += char # add character to the token
-			else:
+			else: # end of token
 				if len(token) != 0: # if token,
-					for string in patterns: # check string patterns
-						if string in token: # if match,
+					for pattern in patterns: # go pattern by pattern in patterns
+						if pattern in token: # if match,
 							if not token in result:
 								result[token] = 1 # if new match, count equals one
 							else:
