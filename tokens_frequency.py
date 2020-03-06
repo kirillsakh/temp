@@ -38,7 +38,7 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 							else:
 								result[token] += 1 # else, increment match count
 							break # no need to continue; avoid duplicity
-					token = '' # empty token object
+					token = '' # empty token object for next entry
 	
 	if result: # if not empty
 		with open(output_file, "a") as file:
