@@ -22,7 +22,7 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 	except FileNotFoundError:
 		print("File not accessible")
 
-	result = {} # initialize dictionary to store frequency counts
+	counters = {} # initialize dictionary to store frequency counters
 
 	for line in lines: # go line by line
 		token = '' # initialize token object
@@ -33,20 +33,20 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 				if len(token) != 0: # if token,
 					for pattern in patterns: # go pattern by pattern in patterns
 						if pattern in token: # if match,
-							if not token in result:
-								result[token] = 1 # if new match, counter equals one
+							if not token in counters:
+								counters[token] = 1 # if new match, counter equals one
 							else:
-								result[token] += 1 # else, increment match counter
+								counters[token] += 1 # else, increment match counter
 							break # no need to continue; avoid duplicity
 					token = '' # empty token object for next entry
 	
-	if result: # if not empty
+	if counters: # if not empty
 		with open(output_file, "a") as file:
-			for key in sorted(result): # save match counters to file
-				file.write(f"{key} {result[key]}\n")
+			for token in sorted(counters): # save token counters to file
+				file.write(f"{token} {counters[token]}\n")
 			file.write(f"{'-'*10}\n")
 
-	return result if result else -1
+	return counters if counters else -1
 
 def test_function():
 	print("Testing ... ", calculate_frequency.__doc__)
