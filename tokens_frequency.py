@@ -83,8 +83,6 @@ def test_function():
 		print("Fail")
 
 	# Tesctcase #3 (nonexisting string pattern)
-	test_dictionary = {}
-
 	output_dictionary = calculate_frequency('test.txt', ['nesmysl'])
 	
 	print("\nTestcase #3 (nonexisting string pattern)", end=' ')
