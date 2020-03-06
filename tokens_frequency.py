@@ -18,7 +18,7 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 
 	try:#better safe than sorry
 		with open(input_file, encoding=encoding_type) as file:
-			lines = file.readlines() # read lines from file to list
+			lines = file.readlines() # read all lines from file to list
 	except FileNotFoundError:
 		print("File not accessible")
 
