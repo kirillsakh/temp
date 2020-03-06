@@ -39,17 +39,17 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 								result[token] += 1 # else, increment match count
 							break # no need to continue; avoid duplicity
 					token = '' # empty token object
-	
-	with open(output_file, "a") as file:
-		for key in sorted(result):
-			file.write(f"{key} {result[key]}\n")
-		file.write(f"{'-'*10}\n")
+	if result:
+		with open(output_file, "a") as file:
+			for key in sorted(result):
+				file.write(f"{key} {result[key]}\n")
+			file.write(f"{'-'*10}\n")
 
 	return result
 
 def test_function():
 	print("Testing ... ", calculate_frequency.__doc__)
-	
+	# Tesctcase #1 (regular case)
 	test_dictionary = {
 	"awe":    1,
 	"pa,":     1,
@@ -60,16 +60,43 @@ def test_function():
 
 	output_dictionary = calculate_frequency('test.txt', ['pa', 'we'])
 	
-	for key in sorted(output_dictionary): # print results
-		print(f"{key}: {output_dictionary[key]}")
-	
-	print("\nTestcase #1", end=' ')
+	print("\nTestcase #1 (regular case)", end=' ')
 	for key in test_dictionary:
 		if not key in output_dictionary or \
 		test_dictionary[key] != output_dictionary[key]:
 			print("Fail")
 			return
 	print("OK")
+
+	print("\nTokens frequency distribution: ")
+	for key in sorted(output_dictionary): # print results
+		print(f"{key:>10}: {output_dictionary[key]}")
+
+	# Tesctcase #2 (empty input_file)
+	test_dictionary = {}
+
+	output_dictionary = calculate_frequency('test2.txt', ['pa', 'we'])
+	
+	print("\nTestcase #2 (empty input_file)", end=' ')
+	for key in test_dictionary:
+		if not key in output_dictionary or \
+		test_dictionary[key] != output_dictionary[key]:
+			print("Fail")
+			return
+	print("OK")	
+
+	# Tesctcase #3 (nonexisting string pattern)
+	test_dictionary = {}
+
+	output_dictionary = calculate_frequency('test.txt', ['nesmysl'])
+	
+	print("\nTestcase #3 (nonexisting string pattern)", end=' ')
+	for key in test_dictionary:
+		if not key in output_dictionary or \
+		test_dictionary[key] != output_dictionary[key]:
+			print("Fail")
+			return
+	print("OK")	
 
 if __name__ == '__main__':
 	test_function()
