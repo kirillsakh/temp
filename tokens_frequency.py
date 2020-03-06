@@ -42,7 +42,7 @@ def calculate_frequency(input_file, patterns, encoding_type=None, output_file=No
 	
 	if result: # if not empty
 		with open(output_file, "a") as file:
-			for key in sorted(result):
+			for key in sorted(result): # save counts to file
 				file.write(f"{key} {result[key]}\n")
 			file.write(f"{'-'*10}\n")
 
@@ -77,19 +77,13 @@ def test_function():
 	output_dictionary = calculate_frequency('test2.txt', ['pa', 'we'])
 	
 	print("\nTestcase #2 (empty input_file)", end=' ')
-	if len(output_dictionary) == 0:
-		print("OK")
-	else:
-		print("Fail")
+	print("OK") if len(output_dictionary) == 0 else print("Fail")
 
 	# Tesctcase #3 (nonexisting string pattern)
 	output_dictionary = calculate_frequency('test.txt', ['nesmysl'])
 	
 	print("\nTestcase #3 (nonexisting string pattern)", end=' ')
-	if len(output_dictionary) == 0:
-		print("OK")
-	else:
-		print("Fail")
+	print("OK") if len(output_dictionary) == 0 else print("Fail")
 
 if __name__ == '__main__':
 	test_function()
